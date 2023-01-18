@@ -3,12 +3,12 @@ import cors from '@fastify/cors';
 import { PrismaClient } from '@prisma/client';
 
 const app = Fastify();
-const prismaTable = new PrismaClient()
+const prisma = new PrismaClient()
 
 app.register(cors)
 
 app.get('/hello', async  () => {
-   const habits = await prismaTable.habit.findMany ({
+   const habits = await prisma.habit.findMany ({
       where: {
          title: {
             startsWith: 'Beber'
